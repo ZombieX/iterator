@@ -35,29 +35,25 @@ TYPED_TEST_P(IteratorTest, EndEq) {
 TYPED_TEST_P(IteratorTest, OldFor) {
 
 	auto it = zxc::st::begin(a);
+;
 	for (int i{}; i < size-1 ;++i) {
+		EXPECT_EQ( *it, a[i]  );
 		++it;
-		EXPECT_NE( it, zxc::st::begin(a)  );
-		EXPECT_NE( it, zxc::st::end(a) );
 	}
-	++it;
-
-	EXPECT_NE(it , zxc::st::begin(a));
-	EXPECT_EQ(it , zxc::st::end(a));
 
 }
 
 
 TYPED_TEST_P(IteratorTest, RangeFor){
+	
 	int count{0};
 	auto it = zxc::st::begin(a);
-	/*for (auto &e:a) {
-		if (count != 0)
-			EXPECT_NE(e, *it);
-		else
-			EXPECT_EQ(e, *it);
-		++count;
-	}*/
+	
+	for (auto &e:a) {
+
+		EXPECT_EQ(e, *it);
+		++it;
+	}
 	
 }
 
